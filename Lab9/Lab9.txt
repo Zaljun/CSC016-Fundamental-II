@@ -1,0 +1,81 @@
+  Lab 9
+                CSC 16
+
+Turn in: Code well documented and consistently intended, good variable names
+         and copy of original output as follows:
+          -  For the N queens problem test it with increasing values of N and
+            find the largest N value that runs in less than a minute.  
+          -  For the word count problem, copy the content of the output file. 
+
+1. (50 pts) N - queens problem: Place N queens on an NXN board such that no two queens attack each other. 
+
+Ask the user for an integer value between 4 and 100 (start with small # - 4). This is the value N = number of queens and the size of the board. 
+
+Assume that each queen can move on any position in a column. For example, Queen 0 can be positioned on any row in column 0 of the board. Queen 1 can be placed on any location in column 1 and so on. 
+
+n = # of queens
+
+board = 1 dimensional dynamic array of size n
+
+// allocate a 1-dim int array of size n
+int *board = new int[n]; // allocate an array of n pointers to bool
+for (int i =0;i < n; i++)
+    board[i] = -1;  // -1 means no queen on that column
+    						 . 
+
+// Pseudo-code of the backtracking algorithm (recursive):  
+		   		    
+		    bool backtracking(int *board, int index_next_queen, int n)
+		        
+		        if (index_next_queen == n)
+		            return true;  // done
+		        else
+		        
+		            For each row r = 0 to N-1
+		            
+		                Place queen index_next_queen on row r on board
+		                If it doesn't conflict with previous queens
+		                  if backtracking(board, index_next_queen+1, n) == false
+		                    remove queen index_next_queen from row r
+		                  endif
+		                endif
+		            
+		            endfor
+		            return false
+		        endif
+	
+	Write and test a check_conflict function that receives the current board and the index of the last placed queen:
+	
+	    bool check_conflict(int *board, int ind_last_queen)
+	        // check conflict between ind_last_queen and all queens from 0 to 
+	        // ind_last_queen - 1
+	        // return false whenever you find the first conflict
+	        // check row conflict:           board[i] = board[j]
+	        // check main diagonal conflict: board[i] - i == board[j] - j
+	        // check other diagonal conflict:boar[i] + i  == board[j] + j 
+
+2. (50 pts) Read about the C++ list class at www.cplusplus.com. 
+
+Use it to extract all words in a paragraph - stored as a string. Each item in the list will contain the word and its count. Define a class WordCount for objects of this type. Their data members will be word (string) and count (int). Add all the necessary function members to be able to set and get the values of those data members. 
+
+A word is a string of characters that start with a letter and has no spaces or these word delimiters ",!?" inside. A word can end with a space, or another word delimiter: ".,?!()-~/|\" 
+
+Use the list class in C++ to store and update WordCount objects. Sort the list in the decreasing order of word frequency. Output the sorted list in a text file. 
+
+Input: a string containing the following paragraph: 
+
+"Even before the blaze at Notre Dame was extinguished, conspiracy theories and fake news about the fire had ricocheted around the internet.
+
+The most egregious examples of disinformation originated in the darker corners of the internet, but many found bigger audiences on social media.
+
+And big social media companies appeared to struggle to contain the spread of the content.
+
+Here are some of those conspiracy theories:
+
+One prominent conspiracy theory revolved around the claim that the fire had been deliberately started. InfoWars, a fringe website which is known for spreading conspiracy theories, published a story which suggested the fire had been intentionally set. The claim was based on a single erroneous tweet, which was later deleted. The InfoWars story remains online. 
+
+On Twitter, a fake account made to look like one operated by CNN claimed the fire was caused by terrorism. The account, which was created in April, was only removed several hours after CNN publicly called out Twitter over it.
+One strategy appeared to be the use of old and unrelated articles about Catholic churches being desecrated in France to insinuate that the Notre Dame fire was an intentional act.
+What we know: Paris Prosecutor Rémy Heitz said that while the cause of the fire has not been established, it was likely accidental. Nothing shows that it's an intentional act, he said in a press conference on Tuesday."
+
+Output: A text file with all words (all lower case letters) followed by their count, sorted in the order of frequency from the most frequent to the least frequent. 
