@@ -1,0 +1,136 @@
+Lab 8
+		CSC 16, Spring 2019
+
+Part I Pointers
+
+Preliminary: Read the class notes and study the sample code on pointers. 
+
+Lab tasks:
+
+1. (10 pts) Write a program (pointers.cpp) that declares one integer variable (v_int) and one short integer (v_short) and displays their addresses 
+ using the & operator. (!!new)Initialize to some values. Use the sizeof() function to output 
+ the size of v_int and v_short  (in bytes). 
+
+Usage of sizeof(): sizeof(type) or sizeof(expression). It returns the number 
+of bytes of a data type. For example:
+
+	cout << sizeof(short) << endl; 
+	// will display 2 because the size in Bytes of a short is 2 bytes
+
+You can display the address of a variable using:
+
+	cout << &v_int << endl;
+		
+The address will be displayed in hexadecimal. It will have the prefix 0x followed by 8 (32 bits address) or 16 (64 bits address) hexadecimal digits depending on the computer you are running the program.  
+
+Answer the following questions: 
+
+a) What is the address assigned to v_int? To v_short? What is 
+the difference (in Bytes) between them? Read the hexadecimal.txt file to learn how to interpret hexadecimal symbols. 
+
+2. (10 pts) To the previous program add a declaration of a
+ char variable (v_char) and initialize it with 'C'. Output
+ its memory address using the & operator and find its size
+ in bytes with sizeof(). If the address does not display correctly (in
+ hexadecimal) use (void *)&v_char in the cout statement: 
+
+		cout << (void *)(&v_char);   
+ 
+Answer the following questions:
+
+a) What is the address of v_char? What is the difference
+ (in Bytes) between the address of v_char and the addresses
+ of v_int and that of v_short? 
+
+3. (10 pts) To the previous program add statements that
+ declare a pointer to a short integer variable (ptr_short),
+ and a pointer to a character (ptr_char). Initialize ptr_short 
+ to point to v_short and ptr_char to point to v_char. 
+ Write code for (a to d) that:
+ 
+(a) Outputs the values of ptr_short and ptr_char.
+
+	Use: cout << (void *)ptr_char << endl; to display the value 
+	stored in ptr_char
+
+(b) Outputs the memory addresses where ptr_short and ptr_char are stored.
+
+   Use: cout << (void *)&ptr_char; to display the address of ptr_char
+ 
+(c) Outputs the values pointed by ptr_short and ptr_char (use the
+dereferencing operator (*)). 
+
+(d) Outputs the size of ptr_short and the size of ptr_char
+ using the sizeof() operator. Compare them with the size of 
+values they point to. Explain the differences.
+
+(e) Draw the memory locations of ptr_short, ptr_char, v_char, 
+v_int and v_short and their memory addresses. Explain the 
+relations between them.
+
+4.  (20 pts) To the previous program add a declaration of a
+ pointer to an int (ptr_int). Allocate dynamic
+ memory for one  integer value using the new operator.
+ Initialize the allocated memory with value -5. 
+ 
+Example allocating dynamic memory for an  int:
+		 ptr_int = new int; 
+
+Write code for (a to e) that:		
+
+ (a) Outputs the value of ptr_int. Is this value related to any other
+memory address you found before? Explain what you observe. 
+
+ (b) Outputs the memory address where ptr_int is stored. Relate it to the memory addresses where ptr_int, ptr_short, ptr_char, v_char, v_int and v_short are stored. 
+ 
+ (c) Outputs the value pointed by ptr_int. 
+ 
+ (d) Changes the value pointed by ptr_int to be -10. Output
+ the new value pointed by ptr_int.
+ 
+ //(e) Change ptr_int to be equal to ptr_short. Output the value
+ //of ptr_int and the value pointed by ptr_short. If you get an error, 
+ //type cast ptr_short as a pointer to an int:
+ 		
+ //			ptr_int = (int *)ptr_short;
+ 
+ (e) 
+Answer these questions:
+
+ (f) What happened to -10. Can you still find the memory
+ location where -10 is stored? If not, explain why? 
+ 
+ (g) Draw the memory locations of all variables in your program (from problems 1 to 4)  and their memory locations. Show the dynamic memory pointed by ptr_int.
+
+###############################################################################
+Turn in for Part I: Turn in one file with the program, program output and answer to the questions. 
+############################################################################### 
+
+
+Part II. Dynamic memory and pointers
+
+(50 pts) Write a program that does the following tasks (define functions as needed):
+
+1. (5 pts) Initialize a string object to a sentence. 
+
+2. (10 pts) Find the number of words in the sentence. Write a recursive count function that returns the number of spaces in the sentence. 
+
+3. (5 pts) Allocate dynamic memory for an array of strings with the same size as the number of words in the sentence (you have to use new). The pointer to the array is named: ptr_string. 
+
+2. (25 pts) Write a function that extracts all words in a string and stores them in the dynamic array you allocated at 3. The function prototype is:
+
+    void extract_words(const string &sentence, string *ptr_words);
+    
+    It has two input parameters: the string containing the sentence and the pointer to the dynamic array. 
+    
+    The function should find the location of each space character, extract the
+    substring containing each word and store it in the dynamic array. 
+
+3. (5 pts) Call the function in main and display all words in the sentence, followed by their length. 
+
+    length of the first string item in the dynamic array:
+            
+           cout << ptr_array[0].length()
+
+4. (Extra credit 20 pts) Modify the code so that it counts all words separated not only by space but by any punctuation marks and it extracts all of them correctly. 
+

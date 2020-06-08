@@ -1,0 +1,74 @@
+Lab 7 
+CSC 16 Spring 2019
+
+
+Design a class called ListInt that holds a list of integers. Details of the class are below.
+
+A list has an initial capacity set when a new ListInt object is declared. 
+
+The class will have the following data members:
+
+    int *ptr_list;   // pointer to the memory address reserved for the array
+    int capacity;    // maximum number of integers that can be stored in the 
+                     //  list
+    int size;        // current number of items stored in the list
+    
+Constructors/Destructors:
+
+Default + specific constructor:     ListInt(int capacity = 100);
+    
+        - Allocate memory for a list of capacity size (default capacity = 100).
+        - set size to 0 = empty list
+
+Copy constructor                    ListInt(const ListInt &other);
+
+        - Allocate memory for a list of capacity equal to the other list object 
+        - copy each item from the other list object into the new object
+
+Destructor                        ~ListInt();
+
+        - Deallocate memory for the list items
+        
+Other function members:
+
+    bool is_empty(); // returns true if the list has no items stored (size == 0)
+    bool is_full();  //returns true if the list is full (size == capacity)
+    int  get_size();   // returns the size of the list
+    int  get_capacity(); // returns the capacity of the list
+    
+    int insert(int new_item, int pos = 0);  
+    // inserts a new item stored at index pos (default value = insert at the beginning (pos = 0))
+    // if the list is full  function returns -1 and does not insert
+    // if the list is not full, it moves all items from pos to size-1 one position towards the end of the list and it inserts the new item; adjusts size; function returns 0
+    
+    int remove(int pos); 
+    // deletes an item from the list at index pos
+    // returns -1 if the list is empty and it cannot delete anything
+    // moves all items from pos+1 to size-1 one position towards the beginning of the list, adjusts size and returns 1 
+    
+    
+    void display();  // displays the content of the lisst
+    
+    void sort();    // sorts the items in the list (any sorting algorithm)
+    
+    int search(int item); // search for an item in the list (linear search) returns the index of the location if found, or -1 if not found. 
+    
+    int item_at(int pos);  // returns the value stored in the list at index pos.
+    // assert pos < size && pos >= 0
+    
+    
+    // extra credit 20 pts
+    void change_capacity(int new_capacity); 
+    // assert (new_capacity <= size);
+    // allocates memory for the new list
+    // copies all items from the old list
+    // deallocates the memory for the old list
+    
+    
+Write the header file: ListInt.h, implementation file ListInt.cpp and the testing file: testListInt.cpp. 
+
+In the testing file, test each constructor and function member, make sure you don't delete from an empty list or you don't insert in a full list. 
+
+Turn in one file containing: the code in the three files, copy of the program output. 
+
+

@@ -1,0 +1,147 @@
+Lab 5
+	CSC 16, Spring 2019
+
+
+##########################################################################
+Turn in on blackboard:
+
+For each problem/program (1-4 required, rest optional) turn in one file with the name of the problem containing:
+
+    0. Acknowledgements if you received help - from whom and what kind of help. 
+	1. Code (well documented, consistent indentation). 
+	2. Sample outputs = test your program thoroughly. 
+	
+##############################################################################
+	
+Goal: Recursive functions and working with string class objects and functions
+
+
+Preliminary tasks:
+
+A. String class and recursion
+
+	read Strings.pptx
+	run exString.cpp  // example of using string class objects and functions. 
+
+	Look at the documentation for <string> class:
+			 http://www.cplusplus.com/reference/string/string/ 
+    
+	Look at the functions in <cctype> = has functions that operate at the
+	character level - old C functions
+	
+	char array[] = "Today is Wednesday" -> c style string: an array of
+				   characters ended with '\0'; 
+	functions that operate on C style strings are in <cstring> library
+	<cctype> library has functions that operate at the character level - 
+	old C functions
+	
+
+B. Write a function that receives a string of characters. It returns true if it is a valid name, false otherwise. Assume that there is only one first name and one last name. Each of them have to start with capital letter. No non-letter characters are allowed. 
+
+	Use cases:  "John Doe"  --> true
+				"john doe"  --> false
+				"John"      --> false    
+	
+	  Use isupper() and islower() functions in <cctype> library. Check their
+	  usage in the  C ++ reference on-line . 
+	
+	    int islower(char c); // returns non-zero if c is a lower case letter, 
+ 							 // 0 otherwise
+		int isupper(char c); // returns non-zero if c is an upper case letter,
+							 // 0 otherwise
+							 
+							
+
+!!!! Lab 5 assignment problem - all must be solved recursively. 
+	
+For the exercises 1 to 2 below use string objects to store strings of characters. 
+
+1. (25 pts) Write a recursive function to replace a character in a string with another character. Use the substr() function in the string class to extract a substring from the original string. DO NOT USE the replace function in the string class - you will receive no credit.  Return the new string.
+
+	Use case:  input: "afternoon showers and thunderstorms"
+			   replace 'o' with 'm'
+			   output: "afternmmn shmers and thunderstmrms" 
+			   
+	string replaceChar(string s, char orig, char replace)
+
+	Base case:	
+		
+	Recursive case:	
+
+
+2. (25 pts) Write a recursive function that converts a string into upper case letters. Use the substring function. Return the new string.
+
+	Use cases: 
+	
+		toUpper("Today")      --> TODAY
+	
+	string toUpper(string s);
+	
+	Use the toupper() function below to convert a character to upper case letter.  Look for its usage in the C++ reference page on-line.
+   
+    int toupper ( int c );    
+    // input is a character, output is the upper case letter if input is a lower
+    //case letter. 
+
+
+	   Base case:   
+	   
+	   Recursive case:	   
+
+
+3. (25 pts) Implement the binary search algorithm recursively for an array of integers 
+
+4. (25 pts) Implement the merge sort algorithm recursively for an array of integers. 
+
+
+Extra credit problems (interview problems)
+
+(30 pts): Given an infinite number of quarters, dimes, nickels and pennies write a recursive function that calculates the number of ways to represent n cents. 
+
+(30 pts) Write a recursive function that generates all possible ways of ordering numbers from 1 to n - permutations. 
+
+(30 pts) Coin game: Alice and Bob are playing a game using a bunch of coins. The players pick several coins out of the bunch in turn. Each time a player is allowed to pick 1, 2 or 4 coins, and the player that gets the last coin is the winner. Assume that both players are very smart and he/she will try his/her best to work out a strategy to win the game. For example, if there are 2
+coins and Alice is the first player to pick, she will definitely pick 2 coins and win. If there are 3 coins and Alice is still the first player to pick, no matter she picks 1 or 2 coins, Bob will get the last coin and win the game. Given the number of coins and the order of players (which means the first and the second players to pick the coins), you are required to write a program to calculate the winner of the game, and calculate how many different strategies there are for he/she to win the game. You should use recursion to solve the problem, and the parameters are read from the command line. You can assume that there are no more than 30 coins.
+
+http://www.cs.cornell.edu/courses/cs2110/2014fa/L07-Recursion/recursion_practice.pdf 
+
+(30 pts) N - queens problem 
+
+Ask the user for an integer number between 4 and 100 (start with small # - 4). Write a function that places a queen on a row on each column from 0 to n-1 so that no queens attack each other. 
+
+n = # of queens
+Table = 2 dimensional dynamic array
+
+// allocate a 2-dim bool array of size n
+bool **table = new bool *[n]; // allocate an array of n pointers to bool
+for (int i =0;i < n; i++)
+    table[i] = new bool[n];  // allocate an array of n bool to each pointer to
+    						 // bool - a row in the table. 
+
+// access an element in the 2-dim array:  table[i][j]
+
+// pass the 2 dim array to a function fname( bool **ptr_table, int size) 
+ 
+// algorithm:  
+		    Place one queen at a time starting from row 0. 
+			If it doesn't attack any of the previous queens, 
+				  place the next queen. -> recursive call
+			else  place the queen on the next row. 
+
+bool nqueens(bool **ptr_table, int n, int col_next_queen)
+base case:
+			IF (col_next_queen == n)
+				return true;
+			ELSE	
+				bool success = true;
+recursive case:	FOR row = 0 to n-1
+					place col_next_queen at row
+					IF it doesn't attack previous queens
+						 success = nqueens(ptr_table, n, col_next_queen++);
+						 IF (success)
+						   return success;
+						 ENDIF
+					ENDIF
+				ENDFOR
+			    return false;  
+			ENDIF

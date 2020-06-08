@@ -1,0 +1,33 @@
+Decimal numbers or base 10
+
+Symbols: 0 to 9
+Example of a number in decimal: 1903457
+Order of numbers: 0 to 9, 10, 11, 12, ..., 19, 20
+
+Hexadecimal numbers or base 16
+
+Symbols: 0 to 9, A, B, C, D, E, F
+A is 10, B is 11, C is 12, D is 13, E is 14, F is 15
+				 
+Example of a number in hexadecimal: 9A2B
+Order of numbers: 0 to 9, A to F, 10, 11, 12, ..., 19, 1A, 1B,1C,1D,1E,1F, 20
+
+Each hexadecimal symbol corresponds to a binary representation on 4 bits
+
+hexa		binary			number A4  = 1010 0100 - binary 
+0  		= 	0000
+1 		=  	0001
+2   	= 	0010
+3 		=	0011
+4 		=   0100
+5 		=   0101
+6 		=   0110
+7 		=   0111
+8 		=   1000
+9 		=   1001
+A 		= 	1010
+B 		=   1011
+C		= 	1100
+D 		=   1101
+E		=   1110
+F 		= 	1111

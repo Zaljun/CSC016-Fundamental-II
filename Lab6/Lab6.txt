@@ -1,0 +1,269 @@
+ Lab 6
+		CSC 16, Spring 2019
+	
+Preliminary problem:
+
+1.  Write a program using the class Dice for the following problem: 
+   A player rolls two dice. Each die has six faces: 1 to 6. The sum 
+   of the number on each face of the die is computed. If the sum is 
+   7 or 11 on the first throw, the player wins. If the sum is 2, 3, 
+   or 12 on the first throw the player looses. If the sum is 4, 5, 6, 
+   8, 9, or 10 on the first throw, then that sum becomes the player's 
+   "point". To win, the player continues to roll the dice until the 
+   player hits his/her "point". The player looses by rolling a 7 
+   before making the point. After winning or loosing, ask the 
+   player if he/she wants to play another game. The player can 
+   also quit at any time of the game.
+   
+   Step 1. Copy the Dice.h and Dice.cpp files in your working directory. 
+   
+   Step 2. Write a program game.cpp with  main() function implementing
+   the game. Use Dice objects and functions instead of integer 
+   variables. 
+   
+   Ex:  int main()
+   	    {
+   	    	// add the logic of the game 
+   	    	Dice d1;
+   	    	Dice d2;
+   	    	
+   	    	d1.roll(); 
+   	    	d2.roll();
+   	    	
+   	    	int sum = d1.getFace() + d2.getFace();
+   	    }
+   
+   To compile all files use: g++ -o game game.cpp Dice.cpp
+   
+   If you are using Geany you need to change the build command for game.cpp:
+   	 	Go to Build  -> Set Build Commands  -> Second Item (2. Build)
+   	 	Append Dice.cpp at the end of the standard command: 
+   	 			g++ -Wall -o "%e" "%f" 
+   	 	
+   	 	The build command should look like:  g++ -Wall -o "%e" "%f" Dice. cpp. 
+   	 	
+   	 	
+Lab problems
+   	 	
+1. (30 pts) Design, implement and test a new class for objects of type Team for 
+a sport of your choice. A Team object should contain the following data members:
+team name,  number of players, number of wins, number of losses and 
+anything else that pertains to your choice of sport. You need to select what 
+data type each data member should be. The function members should include:
+ 
+	a. Team() Default constructor 
+	b. Team(const string newName, int newPlayers) Specific constructor
+	   Call the setTeam() function
+	c. display() - displays information about the team.
+	d. addWins() - increment the number of wins
+	e. addLosses() - increment the number of losses. 
+	f. addPlayer(int nrPlayers) - adds a number of players. 
+	g. delPlayers(int nrPlayers) - deletes a number of players
+	h. setTeam(char name[], int players, int wins, int losses); // call this in the specific constructor
+	i. isBetter(const Team &other) - returns true if the calling object has more points than the object other that is passed by reference to the function. You can define what 'more points' means for your sport
+	j. getWins() returns the number of wins for a team object
+	k. getLosses() returns the number of losses for a team object
+	l. getPoints() - returns the number of points a team has (a cumulative score depending on the number of losses and wins. 
+	
+   Anything else that you wish to add to improve the class functionality. 
+	
+   In test_team.cpp declare a few Team objects. Test each function member of the class.
+   
+   Step 1: a) Look at the Dice.h and Dice.cpp in detail
+   		   b) See how the default and specific constructors are implemented
+   		   c) The specific constructor calls a function setFace() and passes the
+   		     input value to it. You should set up a new object by calling
+   		     setTeam() inside the constructors.
+   Step 2: Write the class declaration in Team.h
+   Step 3: Implement each function member in Team.cpp
+   Step 4: Test each function in test_team.cpp inside main(). 
+           Suggestion: Interleave Step 3 and 4 for each function. Avoid
+           			  defining all functions and testing them at the end.  
+   
+   Notes: To compile on Linux/Mac use: 
+		  g++ -o test_team test_team.cpp Team.cpp  
+   
+    If you are using Geany you need to change the build command for
+    test_team.cpp:
+   	 Go to Build  -> Set Build Commands  -> Second Item (2. Build)
+   	 Append Team.cpp at the end of the standard command: 
+   	 			g++ -Wall -o "%e" "%f" 
+   	 	
+   	  The build command should look like:  g++ -Wall -o "%e" "%f" Team.cpp.
+	
+2. (30 pts) Design and implement a class Money for money objects. The class should store the $ dollar amount and the cent amount. Class functions will: (1) add or (2) subtract amounts if possible - no Money object will have less than 0, (3) display amount. 
+
+		public class Money{
+		
+			private:  int dollars; // >= 0
+					  int cents;   // >=0 and < 100
+					  		
+			public: 
+				// constructors
+				Money();  // initializes a new object to $0.00
+				Money (int new_dollars, int new_cents); 
+				// initializes a new object to $new_dollars.new_cents 
+				// Precondition new_dollars >=0 and new_cents >=0 and < 100
+				
+				void add(int add_dollars, int add_cents); 
+				// adds amount to Money object
+				// Precondition: add_dollars >= 0 and add_cents >=0 and < 100
+				
+				void add(const Money &add_money); 
+				
+				void subtract(int sub_dollars, int sub_cents);
+				// subtract amount to Money object
+				// Precondition: sub_dollars >= 0 and sub_cents >=0 and < 100
+				// and final amount  >= 0 cents
+				
+				void subtract(const Money &sub_money);
+				
+				void display() const;  
+								// displays object amount as $dollars.cents
+								 // For extra credit: 
+								 // if dollars > one thousand, $x,xxx.dd
+								 // and so on.
+								 
+				string to_string() const;  // returns a string with 
+										   // the object data
+										   
+				int get_dollar() const;    // returns the dollar amount
+				int get_cents()  const;    // returns the cents amount	
+				
+				bool isBigger(const Money &other); 
+				// returns true if amount stored in calling object is 
+				// bigger than or equal to the amount in other object			 
+		};
+
+	
+   Step 1: Write the class declaration in Money.h
+   Step 2: Implement each function member in Money.cpp
+   Step 3: Test each function in test_money.cpp inside main(). 
+           Suggestion: Interleave Step 3 and 4 for each function. Avoid
+           			  defining all functions and testing them at the end. 
+           			  
+   Notes: To compile on Linux/Mac use: 
+		  g++ -o test_money test_money.cpp Money.cpp  
+   
+   If you are using Geany you need to change the build command for
+    test_money.cpp:
+   	 
+   	 Go to Build  -> Set Build Commands  -> Second Item (2. Build)
+   	 
+   	 Append Team.cpp at the end of the standard command: 
+   	 			g++ -Wall -o "%e" "%f" 
+   	 	
+   	 The build command should look like:  g++ -Wall -o "%e" "%f" Money.cpp.
+	
+3. (40 pts) Design and implement a class Account. A class Account will have a Money object denoting the amount of money left in the account. Functions of the class Account will allow to transfer money from one account to another, to witdraw or deposit money in the account - again no transaction will result in a negative amount. 
+  
+  	   public Account
+  	   {
+  	   		private: 
+  	   			 Money amount;
+  	   			 string account_id;  // a string of 10 digits 
+  	   				
+  			public: 
+  				
+  				 Account(); // sets a new account with a random id and 0.00
+  				 		    //  Money
+  				 Account(int start_dollars, int start_cents); 
+  				 			// sets a new account with random id and 
+  				 			// $start_dollars.start_cents money
+  				 void withdraw(int minus_dollars, int minus_cents);
+  				 			// subtract minus_dollars.minus_cents from the 
+  				 			// account			
+  				 			// precondition - you have enough money in 
+  				 			// the account
+  				 void deposit(int add_dollars, int add_cents)
+  				 			// add $add_dollars.add_cents to the account
+  				 
+  				 void transfer_into(Account &destination, const Money &tr_amount);
+  				 // transfer tr_amount from calling object account to 
+  				 // destination
+  				 // Precondition: if enough funds available
+  				
+  				void transfer_from(Account &source, const Money &tr_amount)		
+  				// transfer tr_amount from source account into calling object 
+  				// account
+  				// Precondition: if enough funds available
+  				
+  				bool is_valid(int sub_dollars, int sub_cents);
+  				// returns true if amount in sub_dollars.sub_cents is less than 
+  				// or equal to amount in calling object
+  				
+  				bool is_valid (const Money &sub_amount);
+  				// it does the same thing as above, but the amount is stored 
+  				// in a money object 		
+           } 
+           
+Extra credit:  Add an interest function to the Account class, that will add a certain interest rate value to the account
+
+		void add_interest(int interest_rate);  
+
+   Step 1: Write the class declaration in Account.h
+   Step 2: Implement each function member in Account.cpp
+   Step 3: Test each function in test_account.cpp inside main(). 
+           Suggestion: Interleave Step 3 and 4 for each function. Avoid
+           			  defining all functions and testing them at the end. 
+
+	Notes: To compile on Linux/Mac use: 
+		  g++ -o test_account test_account.cpp Account.cpp  
+   
+    If you are using Geany you need to change the build command for
+    test_account.cpp:
+   	 
+   	 Go to Build  -> Set Build Commands  -> Second Item (2. Build)
+   	 
+   	 Append Account.cpp at the end of the standard command: 
+   	 			g++ -Wall -o "%e" "%f" 
+   	 	
+   	 The build command should look like:  g++ -Wall -o "%e" "%f" Account.cpp.
+
+//###################################################################
+Turn in on Blackboard - one file for each of the three problems:
+		  Acknowledgments for any help you got 
+		  * The code (all three cpp files starting with class definition,
+		  function members definition and testing file. The code should be well
+		  documented, clear and simple style).
+          * Sample output for relevant testing cases. Make sure you test all
+          function members. 
+//###################################################################
+
+Hints:
+
+A. Generate a random account id
+
+Account:: Account(int start_dollars, int start_cents)
+: amount(start_dollars,start_cents) // initializer list
+// calls the specific constructor in the Money class to 
+// initialize the data of amount object
+{ 
+  //set up account id
+  repeat in a loop 10 times
+  int digit = rand()%10  => integers between 0 and 9  --> characters '0' to '9'
+  char char_digit = '0' + digit;
+  account_id += char_digit
+} 
+ 
+B. Convert a money object to a string
+
+ #include <sstream> 
+ 
+ string money;
+ ostringstream convert;   // stream used for the conversion
+ convert << '$' << dollars << '.' << cents;      
+ // insert the textual representation of dollars and cents in the characters in the stream
+ money = convert.str();
+
+
+
+
+
+
+
+
+
+
+
+

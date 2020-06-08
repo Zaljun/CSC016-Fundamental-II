@@ -1,0 +1,60 @@
+Lab 4 Arrays
+   	   CSC 16
+
+
+1. Copy all the files in a new directory inside CSC16, called Lab4. 
+
+2.  Open the file exFile.cpp. Look over the code and run it. 
+    a) Modify the code to compute the maximum and minimum values from the values in the input.txt. 
+    b) Rename the output file with results.txt.
+    c) Write in the output file:
+        Average     value
+        Minimum     value
+        Maximum     value
+    
+3.  (60 pts) Write a new program called process_integers.cpp. 
+    a) (20 pts) Write code to read a set of integer input values from the file input.txt into an array called hours. 
+    
+        a1) Set the maximum size of the integer array to a constant 
+                MAX_SIZE = 30. 
+                
+        a2) Declare the array hours with MAX_SIZE.
+        
+        a4) Write a function called read_input() that reads the values from  input.txt file and stores them inside the array. The function has two input parameters: an integer array and its max_size. The function returns the count of  values read from the input. If the number of values exceeds MAX_SIZE, stop reading. 
+        a5) Call the function read_input() in main to initialize the array hours. Store the return value (number of actual value in input.txt) in a local variable called actual_size. Test the function by printing all values in the array hours (up to actual_size).
+    
+    b) (20 pts) Write a function that sorts an integer array. The name of the function is sort. The input parameters are: the array and its size. The function returns nothing. The array passed by reference will be sorted. Implement the insertion sort algorithm. Call the function in main. Test it by displaying the values in the array hours. 
+    
+	c) (20 pts) Write a function called binarySearch() that implements the binary search algorithm. The function has three inputs: an integer array, its size and the search value. The function will return the index of the item found or -1 if not found. Test the function by calling it in main for a value that is in the array and for a value that is not in the array.  Don't forget to declare the function before you call it. 
+
+
+4. (40 pts) Write a new program called pairs_integers.cpp. 
+
+   a) (10 pts) Initialize an array with 10 values read from an input file. See example below. You need to create your input file and read from it. 
+
+    b) (30 pts) Write a function called find_pairs() that finds all pairs of integers in the array that sum up to a number entered by the user.  Do not just compare each number to all others. Think of a more efficient solution that first sorts the array. Use the sorting function you wrote at 3. 
+				
+	Use cases:
+
+	input array : [12, 14, 17, 15, 19, 20, -11] 
+	All pairs in an array of integers whose sum is equal to a given 
+	value 9 : (-11, 20) 
+
+	input array : [2, 4, 7, 5, 9, 10, -1] 
+	All pairs in an array of integers whose sum is equal to a given value 9 
+	(-1, 10) (2, 7) (4, 5) 
+
+
+//##############################################################################
+Turn in hard copy stapled and on blackboard (submit only one file on blackboard, no double space please):
+
+A Cover page (name, Lab title, Date, Original or Revised)
+
+B Program process_integers.cpp with sample output for sorting and searching.
+C Program pairs_integers.cpp with sample outputs. Test your algorithm thoroughly. Add the steps of your algorithm (pseudo-code) as comment before the find_pairs() function definition inside the program. 
+
+Make sure: 
+  a) Code: Clear, simple, good use of space and indentation, documented code
+  b) Testing: sample outputs that fully check the correctness of the program 
+  c) Requirements: You need to use functions and arrays for all problems above. 
+//#############################################################################

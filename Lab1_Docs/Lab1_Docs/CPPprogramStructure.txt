@@ -1,0 +1,91 @@
+   
+//##########################
+1. C++ Program Structure
+//##########################
+
+A program is a collection of functions. 
+
+/* ########################33######################################
+// Program header: firstProgram.cpp
+// describe what the program does, its inputs and outputs
+// Author: 
+// Date Created:
+//##########################################3#######################
+
+
+// compiler directives to include libraries of pre-defined functions
+// or user defined functions or libraries that your program needs
+
+#include <iostream>  
+		       // iostream library contains functions to read
+		       // from the keyboard or to write on the screen
+#include <string>
+		       // string library contains functions forstring 
+		       // manipulations
+using namespace std;   // use libraries from namespace std (standard)
+
+// definition of function main() - one and only one main function in 
+// any C++ program. Contains the instruction that the program will 
+// execute.  
+// Any executable program needs one and only one main function. 
+
+int main()
+{
+  int i; 	// declaration of i as an integer variable (can take
+         	//  -1,0,1,2... values)
+  cout << "Enter a value for i "; 
+  			// cout function displays a  message on the screen; 
+  cin >> i; 
+  			// cin - waits for the user to input an integer value and
+	    	//  assigns this value to variable i.
+  double halfI; 
+  			// declares halfI as a double variable (ex. 0.25, -4.2)
+  
+  halfI = i/2;  // (2) i/2.0; // (3) (double)i/2;
+  
+  cout << "Half of " << i << " is " << halfI << endl; 
+
+} // end main
+
+
+//###################################
+   #include - Compiler Directives 
+//####################################
+
+#include directive tells compiler to include the content of a file
+ specified as filename at that point in your program
+
+The file is a special file called a header file. It has extension .h
+(filename.h). It can be pre-defined if it is from the C++ standard
+library or user-defined. 
+
+A header file contains declarations of functions/variables that your
+program calls or uses. 
+
+Two forms: 
+
+ #include <filename> // for pre-defined (standard) libraries
+ 
+ Common Libraries: 
+
+	 iostream  Input/Output functions: cin, cout
+	 string    C++ string functions
+	 cmath     Math function: exp(), log(), pow(), sqrt(),
+		   ceil(), fmod()
+	 cstring   C string library 
+	 cstdlib   other functions: abs(), rand(), srand(), atoi(),
+		   atof()
+
+ #include "filename"  // for user defined libraries
+ 
+//########################
+// Comments 
+//########################
+
+	// comments the rest of the line it appears on
+	/* 
+	*/  comments everything in between (single or multiple lines
+	    of code
+
+ 
+ 
